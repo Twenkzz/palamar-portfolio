@@ -1,0 +1,75 @@
+<script>
+const slides = [
+  {
+    img: "images/p1.jpg",
+    desc: `
+      <p>Opis 1</p>
+      <ul>
+        <li>Punkt 1A</li>
+        <li>Punkt 1B</li>
+        <li>Punkt 1C</li>
+      </ul>
+    `
+  },
+  {
+    img: "images/p2.jpg",
+    desc: `
+      <p>Opis 2</p>
+      <ul>
+        <li>Punkt 2A</li>
+        <li>Punkt 2B</li>
+        <li>Punkt 2C</li>
+      </ul>
+    `
+  },
+  {
+    img: "images/p3.jpg",
+    desc: `
+      <p>Opis 3</p>
+      <ul>
+        <li>Punkt 3A</li>
+        <li>Punkt 3B</li>
+        <li>Punkt 3C</li>
+      </ul>
+    `
+  }
+];
+
+let currentIndex = 0;
+
+function showSlide(index) {
+  const imgEl = document.getElementById("carousel-img");
+  const descEl = document.getElementById("carousel-desc");
+  imgEl.src = slides[index].img;
+  descEl.innerHTML = slides[index].desc;
+}
+
+function next() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+}
+
+function prev() {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  showSlide(currentIndex);
+}
+</script>
+
+
+<div class="carousel-container">
+  <div class="carousel" data-index="0">
+    <img id="carousel-img" src="images/p1.jpg" alt="Obrazek 1">
+    <div class="desc" id="carousel-desc">
+      <p>Opis 1</p>
+      <ul>
+        <li>Punkt 1A</li>
+        <li>Punkt 1B</li>
+        <li>Punkt 1C</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button onclick="prev()">&#60;</button>
+      <button onclick="next()">&#62;</button>
+    </div>
+  </div>
+</div>
